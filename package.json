@@ -9,7 +9,7 @@
   "dependencies": {
     "axios": "^0.25.0",
     "keycloak-js": "^16.1.1",
-    "vue": "^3.2.29",
+    "vue": "^3.2.30",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"
   },
