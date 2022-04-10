@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "axios": "^0.26.1",
@@ -15,6 +16,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",
-    "vite": "^2.9.1"
+    "vite": "^2.9.1",
+    "@vue/test-utils": "^2.0.0-rc.18",
+    "vue-jest": "^5.0.0-alpha.10"
   }
 }

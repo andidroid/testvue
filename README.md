@@ -11,3 +11,7 @@ https://vitejs.dev/guide/
 https://vuejs.github.io/vetur/guide/setup.html#vs-code-config
 
 npm run dev
+
+## run keycloak locally
+
+./standalone.bat -Djboss.socket.binding.port-offset=100
