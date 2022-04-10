@@ -7,13 +7,18 @@ import Navigation from './components/Navigation.vue';
 </script>
 
 <template>
-  
+  <v-app>
   <nav>
+    <v-navigation-drawer>
     <navigation></navigation>
+    </v-navigation-drawer>
   </nav>
   <main>
+    <v-main>
     <router-view></router-view>
+    </v-main>
   </main>
+  </v-app>
 </template>
 
 <style>

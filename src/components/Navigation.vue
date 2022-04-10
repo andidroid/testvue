@@ -6,7 +6,6 @@
 <router-link to="/about">About</router-link>
 
 <button type="button" @click="logout">logout</button>
-
 </template>
 
 <script>
