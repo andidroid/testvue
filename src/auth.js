@@ -8,7 +8,7 @@ import store from "./store/store.js";
 console.log(import.meta.env.VITE_APP_AUTH_ENABLED);
 console.log(import.meta.env.VITE_APP_KEYCLOAK_URL);
 let keycloak = null;
-if (import.meta.env.VITE_APP_AUTH_ENABLED) {
+if (import.meta.env.VITE_APP_AUTH_ENABLED == "true") {
   // console.log(process.env.VUE_APP_KEYCLOAK_URL)
   let initOptions = {
     url: import.meta.env.VITE_APP_KEYCLOAK_URL + "/auth",
@@ -72,6 +72,7 @@ if (import.meta.env.VITE_APP_AUTH_ENABLED) {
       console.log("Authenticated Failed", e);
     });
 } else {
+  console.log("set dummy test roles");
   store.commit("SET_ROLES", ["test", "admin"]);
   store.commit("SET_TOKEN", "1323456789");
   store.commit("SET_USER", { id: "test", name: "test" });
