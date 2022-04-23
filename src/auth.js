@@ -5,6 +5,10 @@ import store from "./store/store.js";
 
 // app.config.globalProperties.$http = () => {}
 
+// console.log("test store config");
+// console.log("store", store);
+// console.log("this.$store", this.$store);//does not work here
+
 console.log(import.meta.env.VITE_APP_AUTH_ENABLED);
 console.log(import.meta.env.VITE_APP_KEYCLOAK_URL);
 let keycloak = null;
@@ -73,7 +77,7 @@ if (import.meta.env.VITE_APP_AUTH_ENABLED == "true") {
     });
 } else {
   console.log("set dummy test roles");
-  store.commit("SET_ROLES", ["test", "admin"]);
+  store.commit("SET_ROLES", ["test", "admin", "routing"]);
   store.commit("SET_TOKEN", "1323456789");
   store.commit("SET_USER", { id: "test", name: "test" });
   keycloak = {

@@ -6,7 +6,7 @@ const axios = axios.create({
 
 axios.defaults.headers.common['SOMETHING'] = 'something'
 
-axios.defaults.baseURL = 'https://vue-update.firebaseio.com'
+axios.defaults.baseURL = 'https://localhost'
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + app.config.globalProperties.$keycloak.token
 // this.store.auth.token
 axios.defaults.headers.get['Accepts'] = 'application/json'

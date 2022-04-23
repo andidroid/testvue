@@ -20,6 +20,7 @@ export default defineConfig({
           home: ["./src/pages/Home.vue", "./src/pages/About.vue"],
           admin: ["./src/pages/Admin.vue"],
           test: ["./src/pages/Test.vue"],
+          routing: ["./src/pages/Places.vue"],
           errors: [
             "./src/pages/errors/NotFound.vue",
             "./src/pages/errors/Forbidden.vue",

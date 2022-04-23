@@ -7,6 +7,7 @@ import store from "../store/store.js";
 const routes = [
   {
     path: "/",
+    mame: "home",
     component: () => import(/* webpackChunkName: "home" */ "@/pages/Home.vue"),
   },
   {
@@ -25,17 +26,38 @@ const routes = [
     meta: { needsAuth: true, role: "test" },
   },
   {
+    name: "routing.places.detail",
+    path: "/routing/places/:id",
+    component: () =>
+      import(/* webpackChunkName: "routing" */ "@/pages/PlacesDetail.vue"),
+    props: (route) => ({ id: parseInt(route.params.id), mode: "detail" }),
+    //props: (route) => routeViewParams(route),
+    meta: { needsAuth: true, role: "routing" },
+    beforeEnter(to, from) {},
+  },
+  {
+    name: "routing.places.table",
+    path: "/routing/places",
+    component: () =>
+      import(/* webpackChunkName: "routing" */ "@/pages/Places.vue"),
+    props: (route) => ({ mode: "table" }),
+    meta: { needsAuth: true, role: "routing" },
+  },
+  {
     path: "/notfound",
+    name: "errors.notfound",
     component: () =>
       import(/* webpackChunkName: "errors" */ "@/pages/errors/NotFound.vue"),
   },
   {
     path: "/forbidden",
+    name: "errors.forbidden",
     component: () =>
       import(/* webpackChunkName: "errors" */ "@/pages/errors/Forbidden.vue"),
   },
   {
     path: "/networkerror",
+    name: "errors.networkerror",
     component: () =>
       import(
         /* webpackChunkName: "errors" */ "@/pages/errors/NetworkError.vue"
@@ -51,15 +73,38 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "errors" */ "@/pages/errors/NotFound.vue"),
   },
+  {
+    path: "/:pathMatch(.*)*",
+    component: () =>
+      import(/* webpackChunkName: "errors" */ "@/pages/errors/NotFound.vue"),
+  },
 ];
 const router = createRouter({
   // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
   history: createWebHistory(), //createWebHashHistory(),
   routes, // short for `routes: routes`
-  scrollBehavior() {
-    return { top: 0 };
+  // scrollBehavior() {
+  //   return { top: 0 };
+  // },
+  scrollBehavior(to, from, savedPosition) {
+    return (
+      savedPosition ||
+      new Promise((resolve) => {
+        setTimeout(() => resolve({ top: 0 }), 300);
+      })
+    );
   },
 });
+
+function routeViewParams(route) {
+  console.log("routeViewParams");
+  console.log(route.params.id);
+  if (isNaN(route.params.id)) {
+    return { id: -1, mode: "table" };
+  } else {
+    return { id: parseInt(route.params.id), mode: "detail" };
+  }
+}
 
 // const router = createRouter({
 //   history: createWebHistory(),

@@ -7,6 +7,9 @@
 
 <button type="button" @click="logout">logout</button>
 
+<button type="button" @click="goBack">back</button>
+<button type="button" @click="goForward">forward</button>
+
 </template>
 
 <script>
@@ -20,9 +23,17 @@ export default {
             //const $keycloak = inject('$keycloak');
             keycloak.logout();
             //app.config.globalProperties.$keycloak.logout();
-            store.commit("SET_ROLES", [])
-            store.commit("SET_TOKEN", '')
-            store.commit("SET_USER", {})
+            this.$store.commit("SET_ROLES", [])
+            this.$store.commit("SET_TOKEN", '')
+            this.$store.commit("SET_USER", {})
+            //replace instead of push, to handle goBack history
+            this.$router.replace({path: '/'})
+        },
+        goBack() {
+            this.$router.back()
+        },
+        goForward() {
+            this.$router.forward()
         }
     }
 }
